@@ -1,9 +1,12 @@
+import Notiflix from 'notiflix';
 const body = document.querySelector('body')
 const startButton = document.querySelector('[data-start]')
 const stopButton = document.querySelector('[data-stop]')
 
 let title = document.querySelector('.title')
 let timerId = null;
+
+stopButton.disabled = true;
 
 
 let getRandomHexColor = () => {
@@ -14,12 +17,13 @@ let copyToClipboard = () => {
     let copyText = body.style.backgroundColor;
     navigator.clipboard.writeText(copyText).then(() => {
     
-        alert("Color copied to clipboard");
+        Notiflix.Notify.success("Color copied to clipboard");
     })
 }
 
 startButton.addEventListener('click', () => {
-    return timerId = setInterval(
+    return stopButton.disabled = false,
+    timerId = setInterval(
         () => {return startButton.disabled = true,
             body.style.backgroundColor = getRandomHexColor(),
         title.innerHTML = `Color of this site is: ${body.style.backgroundColor}`;}, 1000)
@@ -27,8 +31,7 @@ startButton.addEventListener('click', () => {
 
 stopButton.addEventListener('click', () => {
     return clearInterval(timerId),
+        stopButton.disabled = true,
         startButton.disabled = false,
         copyToClipboard() 
     })
-
-    console.log(startButton.style)

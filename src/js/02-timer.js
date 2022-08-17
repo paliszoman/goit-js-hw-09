@@ -68,17 +68,26 @@ function convertMs(ms) {
   return { days, hours, minutes, seconds };
 }
 
+let takeDate = () => {
+    let difference = chosenDate - today;
+    if (difference <= 0) {clearInterval(clock)}
+    
+    countDay.innerHTML = convertMs(difference).days
+    countHour.innerHTML = convertMs(difference).hours
+    countMin.innerHTML = convertMs(difference).minutes
+    countSec.innerHTML = convertMs(difference).seconds
+
+}
+
+
 //MAIN
 startButton.disabled = true;
 setInterval(() => { return today = new Date().getTime(); }, 1000) //actual date every second
 flatpickr(datePicker, options);
 startButton.addEventListener('click', () => {
-   setInterval(() => {
-        countDay.innerHTML = convertMs(chosenDate - today).days
-        countHour.innerHTML = convertMs(chosenDate - today).hours
-        countMin.innerHTML = convertMs(chosenDate - today).minutes
-        countSec.innerHTML = convertMs(chosenDate - today).seconds
-   }, 1000);
-})
-//setInterval(() => { console.log(convertMs(chosenDate - today).days) },1000)
-console.log(value)
+    takeDate()
+   let clock = setInterval(() => {
+       takeDate();
+    }, 1000);
+     }    
+)

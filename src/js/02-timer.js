@@ -6,15 +6,16 @@ import Notiflix from 'notiflix';
 //VARIABLES
 const datePicker = document.querySelector('#datetime-picker');
 const startButton = document.querySelector('[data-start]')
-const countDay = document.querySelector('[data-days]');
-const countHour = document.querySelector('[data-hours]');
-const countMin = document.querySelector('[data-minutes]');
-const countSec = document.querySelector('[data-seconds]');
+const days = document.querySelector('[data-days]');
+const hours = document.querySelector('[data-hours]');
+const minutes = document.querySelector('[data-minutes]');
+const seconds = document.querySelector('[data-seconds]');
 const timer = document.querySelector('.timer');
 const value = document.querySelector('.value');
 const label = document.querySelector('.label');
 let today;
 let chosenDate;
+let clock = null;
 
 const options = {
     //minDate: "today",   will be much easier xD
@@ -33,20 +34,6 @@ const options = {
     }
 }
 
-//STYLES
-/*timer.style
-    .display = 'flex';
-
-
-value.style.justifyContent = 'center'
-value.style.alignItems = 'space-between'
-value.style.paddingLeft = '20px'
-    
-label.style.position = 'absolute'
-
-
-;
-*/
 
 //FUNCTIONS
 function convertMs(ms) {
@@ -70,23 +57,34 @@ function convertMs(ms) {
 
 let takeDate = () => {
     let difference = chosenDate - today;
-    if (difference <= 0) {clearInterval(clock)}
+    if (difference < 1000) {clearInterval(clock)}
     
-    countDay.innerHTML = convertMs(difference).days
-    countHour.innerHTML = convertMs(difference).hours
-    countMin.innerHTML = convertMs(difference).minutes
-    countSec.innerHTML = convertMs(difference).seconds
-
+let addZero= (value) => {
+    if (value < 10) {
+        return value.toString().padStart(2, '0');
+    } else {
+        return value;
+    }
 }
-
+ 
+    let countDay = convertMs(difference).days
+    let countHour = convertMs(difference).hours
+    let countMin = convertMs(difference).minutes
+    let countSec = convertMs(difference).seconds
+    
+days.innerHTML = addZero(countDay)
+hours.innerHTML = addZero(countHour)
+minutes.innerHTML = addZero(countMin)
+seconds.innerHTML = addZero(countSec)
+    }
 
 //MAIN
 startButton.disabled = true;
 setInterval(() => { return today = new Date().getTime(); }, 1000) //actual date every second
 flatpickr(datePicker, options);
 startButton.addEventListener('click', () => {
-    takeDate()
-   let clock = setInterval(() => {
+    startButton.disabled = true;
+    clock = setInterval(() => {
        takeDate();
     }, 1000);
      }    

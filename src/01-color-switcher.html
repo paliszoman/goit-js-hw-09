@@ -6,11 +6,39 @@
     <title>Color switcher</title>
     <link rel="stylesheet" href="css/common.css" />
   </head>
-  <body>
+  <body style="position: relative; width: 100vw; height: 300px">
     <p><a href="index.html">Go back</a></p>
-    <h1 class="title">Color of this site is:</h1>
-    <button type="button" data-start>Start</button>
-    <button type="button" data-stop>Stop</button>
+    <h1 class="title" style="position: absolute; top: 20%; left: 38%">
+      Color of this site is:
+    </h1>
+    <button
+      type="button"
+      data-start
+      style="
+        width: 100px;
+        height: 50px;
+        border-radius: 5;
+        position: absolute;
+        top: 50%;
+        left: 47%;
+      "
+    >
+      Start
+    </button>
+    <button
+      type="button"
+      data-stop
+      style="
+        width: 100px;
+        height: 50px;
+        border-radius: 5;
+        position: absolute;
+        top: 50%;
+        left: 53%;
+      "
+    >
+      Stop
+    </button>
 
     <script src="js/01-color-switcher.js" type="module"></script>
   </body>

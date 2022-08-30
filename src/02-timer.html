@@ -5,12 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Countdown timer</title>
     <link rel="stylesheet" href="css/common.css" />
+
+    <style type="text/css">
+      #datetime-picker {
+        width: 220px;
+        height: 30px;
+      }
+      .start-button {
+        width: 100px;
+        height: 30px;
+      }
+      .timer {
+        display: flex;
+      }
+      .field {
+        display: flex;
+        justify-content: center;
+        position: relative;
+        width: 70px;
+      }
+      .value {
+        position: absolute;
+        font-size: 30px;
+      }
+      .label {
+        position: absolute;
+        top: 30px;
+        font-weight: 500;
+      }
+    </style>
   </head>
   <body>
     <p><a href="index.html">Go back</a></p>
 
     <input type="text" id="datetime-picker" />
-    <button type="button" data-start>Start</button>
+    <button type="button" class="start-button" data-start>Start</button>
 
     <div class="timer">
       <div class="field">

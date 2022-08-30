@@ -18,7 +18,7 @@ let chosenDate;
 let clock = null;
 
 const options = {
-    //minDate: "today",   will be much easier xD
+    //minDate: "today", will be much easier xD
     enableTime: true,
     time_24hr: true,
     defaultDate: new Date(),

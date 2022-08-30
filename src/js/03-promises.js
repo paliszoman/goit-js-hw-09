@@ -22,5 +22,7 @@ button.addEventListener('click', (e) => {
     for (let i = 1; i <= position; i++) {
       createPromise(i, firstDelay+delay*(i-1))
           .then(value => { Notiflix.Notify.success(value) })
-          .catch(error => { Notiflix.Notify.warning(error) })}
+      .catch(error => { Notiflix.Notify.warning(error) })
+  }
+
 })

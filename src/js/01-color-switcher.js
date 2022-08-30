@@ -8,8 +8,6 @@ let timerId = null;
 
 stopButton.disabled = true;
 
-body.style.position = 'relative';
-startButton.style.width = "1000px";
 
 let getRandomHexColor = () => {
   return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
